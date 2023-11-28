@@ -1,3 +1,19 @@
+// Search Funktion
+
+function search(e) {
+    const items = document.querySelectorAll('#pokedex_container .pokedex');
+    const searchTerm = e.target.value.trim().toLowerCase();
+
+    items.forEach((item) => {
+        const pokemonName = item.innerText.toLowerCase();
+        if (!pokemonName.startsWith(searchTerm)) {
+            item.style.display = "none";
+        } else {
+            item.style.display = "revert";
+        }
+    });
+}
+
 // Render Pokedex
 
 function renderPokemon() {
