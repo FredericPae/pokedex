@@ -20,12 +20,14 @@ let myLibrary = [];
 // Load Pokemon from API
 
         function loadMorePokemon() {
+            loadingScreen(true);
             let renderNext20 = +start + +35;
             let showMorePokemon = +showPokemon + +34;
             start.splice(0, 1, renderNext20);
             showPokemon.splice(0, 1, showMorePokemon);
             document.getElementById(`pokedex_container`).innerHTML = '';
             loadPokemon();
+            loadingScreen(false);
         }
 
         async function loadPokemon() {

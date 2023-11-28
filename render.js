@@ -1,3 +1,10 @@
+// loading Screen
+
+function loadingScreen(isLoading) {
+    const action = isLoading ? 'remove' : 'add';
+    document.getElementById('loadingScreen').classList[action]('d-none');
+}
+
 // Search Funktion
 
 function search(e) { // Der Funktion wird ein Event übergeben
