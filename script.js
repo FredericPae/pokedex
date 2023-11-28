@@ -20,8 +20,8 @@ let myLibrary = [];
 // Load Pokemon from API
 
         function loadMorePokemon() {
-            let renderNext20 = +start + +20;
-            let showMorePokemon = +showPokemon + +20;
+            let renderNext20 = +start + +35;
+            let showMorePokemon = +showPokemon + +34;
             start.splice(0, 1, renderNext20);
             showPokemon.splice(0, 1, showMorePokemon);
             document.getElementById(`pokedex_container`).innerHTML = '';
@@ -34,9 +34,9 @@ let myLibrary = [];
             let response = await fetch(url);
             responseAsJson = await response.json();
             pushToArrays(i);
+            await collectAllEggGroups(i);
             }
             await collectAllTypes();
-            await collectAllEggGroups();
             renderPokemon();
         }
 
@@ -66,26 +66,26 @@ let myLibrary = [];
         }
 
         async function collectAllTypes() {
+            if(allTypes < 18) {
             for (let i = 0; i < 18; i++) {
                 let url = `https://pokeapi.co/api/v2/type/`;
                 let response = await fetch(url);
                 let responseAsJson = await response.json();
                 allTypes.push(responseAsJson['results'][i]['name']);
             }
+            }
         }
 
-        async function collectAllEggGroups() {
-            for (let i = 1; i < names.length; i++) {
-                let url = `https://pokeapi.co/api/v2/pokemon-species/${i}/`;
-                let response = await fetch(url);
-                let responseAsJson = await response.json();
+        async function collectAllEggGroups(i) {
+            let url = `https://pokeapi.co/api/v2/pokemon-species/${i}/`;
+            let response = await fetch(url);
+            let responseAsJson = await response.json();
 
-                if (responseAsJson['egg_groups'].length === 1) {
-                    eggGroup_1.push(responseAsJson['egg_groups']['0']['name']);
-                    eggGroup_2.push(null);
-                } else {
-                    eggGroup_1.push(responseAsJson['egg_groups']['0']['name']);
-                    eggGroup_2.push(responseAsJson['egg_groups']['1']['name']);
-                }
+            if (responseAsJson['egg_groups'].length === 1) {
+                eggGroup_1.push(responseAsJson['egg_groups']['0']['name']);
+                eggGroup_2.push(null);
+            } else {
+                eggGroup_1.push(responseAsJson['egg_groups']['0']['name']);
+                eggGroup_2.push(responseAsJson['egg_groups']['1']['name']);
             }
         }

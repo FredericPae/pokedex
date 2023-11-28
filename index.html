@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Pokedex</title>
     <link rel="stylesheet" href="style.css" />
     <script scr="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -12,6 +12,7 @@
     <script src="html.js"></script>
     <script src="chart.js"></script>
     <script src="libraries.js"></script>
+    <link rel="icon" href="./img/pokeball copy.ico" type="imgage/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,7 +24,7 @@
   <body id="body" onload="loadPokemon()">
     <header w3-include-html="templates/header.html">
       <h1>Pokedex</h1>
-      <input id="search" placeholder="Search Pokemon" onkeydown="search(event)">
+      <input id="search" placeholder="Search Pokemon" onkeyup="search(event)">
       <div id="libraryButton" class="hover" onclick="openLibrary(true)">
         <img class="icons" src="./img/pokeball.png">
         <b>My Library</b>
@@ -35,7 +36,7 @@
       <div id="pokedex_container"></div>
 
       <div id="showMore">
-        <button class="btn" onclick="loadMorePokemon()">Mehr laden</button>
+        <button class="btn hover" onclick="loadMorePokemon()">Mehr laden</button>
       </div>
 
       <!-- Current Pokemon Card Window -->
@@ -69,9 +70,9 @@
 
     <footer w3-include-html="templates/footer.html">
         <div>
-            <a href="">Impressum</a>
+            <a>Impressum</a>
             <div>|</div>
-            <a href="">Datenschutz</a>
+            <a>Datenschutz</a>
         </div>
     </footer>
   </body>

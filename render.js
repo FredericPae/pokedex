@@ -1,10 +1,10 @@
 // Search Funktion
 
-function search(e) {
-    const items = document.querySelectorAll('#pokedex_container .pokedex');
-    const searchTerm = e.target.value.trim().toLowerCase();
+function search(e) { // Der Funktion wird ein Event übergeben
+    const items = document.querySelectorAll('#pokedex_container .pokedex'); // Mit querySelectorAll werden alle Elemente innerhalb von "#pokedex_container" mit der Klasse ".pokedex" abgerufen und in der Variable items gespeichert
+    const searchTerm = e.target.value.trim().toLowerCase(); // e.target repräsentiert das Element, welches das Ereignis ausgeläst hat (Eingabefeld). Value = Aktueller Wert des Eingabefeldes; trim = entfernt Leerzeichen am Anfag und am Ende des Strings; toLowerCase = wandelt alle Buchstaben zu Kleinbuchstaben um
 
-    items.forEach((item) => {
+    items.forEach((item) => { // forEach wird auf die NodeList angewendet, die von querySelectorAll zurückgegeben wurde.
         const pokemonName = item.innerText.toLowerCase();
         if (!pokemonName.startsWith(searchTerm)) {
             item.style.display = "none";
