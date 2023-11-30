@@ -47,7 +47,7 @@ function renderSmallCard(j) {
                   </div>
                   
                   <div>
-                    <span><b>#${amountOfPokemon[j]}</b></span> <!-- Soll die jeweilie Nummer anzeigen -->
+                    <span><b>#${amountOfPokemon[j + 1]}</b></span> <!-- Soll die jeweilie Nummer anzeigen -->
                   </div>
                 </div>
               </div>

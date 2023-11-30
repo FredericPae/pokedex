@@ -20,30 +20,30 @@ let myLibrary = [];
 // Load Pokemon from API
 
         function loadMorePokemon() {
-            loadingScreen(true);
             let renderNext20 = +start + +35;
-            let showMorePokemon = +showPokemon + +34;
-            start.splice(0, 1, renderNext20);
-            showPokemon.splice(0, 1, showMorePokemon);
+            let showMorePokemon = +showPokemon + +35;
+            start = renderNext20;
+            showPokemon = showMorePokemon;
             document.getElementById(`pokedex_container`).innerHTML = '';
             loadPokemon();
-            loadingScreen(false);
         }
 
         async function loadPokemon() {
+            loadingScreen(true);
             for (let i = start; i < showPokemon; i++) {
             let url = `https://pokeapi.co/api/v2/pokemon/${i}/`; //  Enthält: name, height, weight, ability, types, images, stats
             let response = await fetch(url);
             responseAsJson = await response.json();
-            pushToArrays(i);
+            pushToArrays();
             await collectAllEggGroups(i);
             }
             await collectAllTypes();
+            generateCardNumber();
             renderPokemon();
+            loadingScreen(false);
         }
 
-        function pushToArrays(i) {
-            amountOfPokemon.push(i);
+        function pushToArrays() {
             names.push(responseAsJson['name'].charAt(0).toUpperCase() + responseAsJson['name'].slice(1));
             images.push(responseAsJson['sprites']['other']['dream_world']['front_default']);
             height.push(responseAsJson['height']/10);
@@ -64,6 +64,18 @@ let myLibrary = [];
                 specialElement_2.push(null);
             } else {
                 specialElement_2.push(responseAsJson['types']['1']['type']['name']);
+            }
+        }
+
+        function generateCardNumber() {
+            if(amountOfPokemon <= 35) {
+                for(let i = 1; i <= names.length; i++) {
+                    amountOfPokemon.push(i);
+            }
+            } else {
+                for(let i = start; i <= names.length; i++) {
+                    amountOfPokemon.push(i);
+            }
             }
         }
 

@@ -29,16 +29,24 @@
         <img class="icons" src="./img/pokeball.png">
         <b>My Library</b>
       </div>
+      <img src="./img/mehr.png" id="burgerMenu" class="d-none" style="height: 34px;">
     </header>
 
+    <!-- Loading Sreen -->
     <div id="loadingScreen" class="d-none">
-        <img src="./img/loading_bg.jpeg">
+        <h1>Pokedex is loading...</h1>
+        <img src="./img/loading3_bg.png">
     </div>
 
     <div id="MAIN_CONTAINER" class="MAIN_CONTAINER">
+      <!-- Mobil Searchbar -->
+      <div id="mobilSearchBar">
+        <input id="mobileSearch" placeholder="Search Pokemon" onkeyup="search(event)">
+      </div>
+
       <!-- Pokemon Overview -->
       <div id="pokedex_container">
-        
+
       </div>
 
       <div id="showMore">

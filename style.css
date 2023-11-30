@@ -13,21 +13,33 @@ header {
     box-shadow: 0 2px 4px -2px rgb(190, 190, 190);
 }
 
+body {
+    overflow-x: hidden;
+    margin: 0;
+    font-family: 'open Sans', sans-serif;
+}
+
 #loadingScreen {
+    max-width: 100%;
     display: flex;
     justify-content: center;
     z-index: 6000;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
 }
 
-body {
-    overflow-x: hidden;
-    margin: 0;
-    font-family: 'open Sans', sans-serif;
+#loadingScreen img {
+    object-fit: cover;
+    width: -webkit-fill-available;
+}
+
+#loadingScreen h1 {
+    position: fixed;
+    text-align: center;
+    bottom: 200px;
 }
 
 footer {
@@ -54,6 +66,16 @@ footer div a {
 }
 
 #search {
+    padding: 12px 36px;
+    border-radius: 25px;
+    border-color: black;
+    border-style: solid;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 4px 1px rgb(190, 190, 190);
+}
+
+#mobileSearch {
     padding: 12px 36px;
     border-radius: 25px;
     border-color: black;
@@ -269,6 +291,10 @@ footer div a {
 }
 
 /* Pokemon Overviewe */
+
+#mobilSearchBar {
+    display: none;
+}
 
 #pokedex_container {
     margin-top: 24px;
@@ -572,4 +598,46 @@ td {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+@media (max-width: 950px) {
+    #search, #libraryButton{
+        display: none;
+    }
+
+    header {
+        justify-content: center;
+        gap: 32px;
+    }
+
+    #burgerMenu {
+        display: block !important;
+    }
+
+    #mobilSearchBar {
+        display: flex !important;
+        justify-content: center;
+    }
+
+    .MAIN_CONTAINER {
+        padding: 16px 60px;
+    }
+
+    .pokedex {
+        min-width: 232px;
+    }
+}
+
+@media (max-width: 450px) {
+    header, footer {
+        padding: none;
+    }
+
+    .MAIN_CONTAINER {
+        padding: 16px 16px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
 }
