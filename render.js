@@ -7,11 +7,11 @@ function loadingScreen(isLoading) {
 
 // Search Funktion
 
-function search(e) { // Der Funktion wird ein Event übergeben
-    const items = document.querySelectorAll('#pokedex_container .pokedex'); // Mit querySelectorAll werden alle Elemente innerhalb von "#pokedex_container" mit der Klasse ".pokedex" abgerufen und in der Variable items gespeichert
-    const searchTerm = e.target.value.trim().toLowerCase(); // e.target repräsentiert das Element, welches das Ereignis ausgeläst hat (Eingabefeld). Value = Aktueller Wert des Eingabefeldes; trim = entfernt Leerzeichen am Anfag und am Ende des Strings; toLowerCase = wandelt alle Buchstaben zu Kleinbuchstaben um
+function search(e) {
+    const items = document.querySelectorAll('#pokedex_container .pokedex');
+    const searchTerm = e.target.value.trim().toLowerCase();
 
-    items.forEach((item) => { // forEach wird auf die NodeList angewendet, die von querySelectorAll zurückgegeben wurde.
+    items.forEach((item) => {
         const pokemonName = item.innerText.toLowerCase();
         if (!pokemonName.startsWith(searchTerm)) {
             item.style.display = "none";
@@ -25,8 +25,8 @@ function search(e) { // Der Funktion wird ein Event übergeben
 
 function renderPokemon() {
     for (let j = 0; j < names.length; j++) {
-        renderSmallCard(j); // find function in "render.js"
-        addBackgrounColor(j); // Nach dem rendern der Karte wird der Wert "j" an die Funktion addBackgroundColor übergeben, um jeder Karte einen spezifischen Hintergrund zu geben
+        renderSmallCard(j);
+        addBackgrounColor(j);
 
         if (specialElement_2[j] == null) {
             document.getElementById(`specialty2_${j}`).classList.add('d-none');
@@ -35,11 +35,11 @@ function renderPokemon() {
 }
 
 function addBackgrounColor(j) {
-    let currentSpecialty = document.getElementById(`specialty1_${j}`).innerHTML; // Diese Variable holt sich den Wert ('Text')
+    let currentSpecialty = document.getElementById(`specialty1_${j}`).innerHTML;
 
-    for(let i = 0; i < allTypes.length; i++) { // Diese For-Schleife iteriert durch das Array "allTypes"
-        if (currentSpecialty === allTypes[i]) { // Diese Bedingung überprüft, ob der Wert der Variable mit dem des Arrays übereinstimmt
-            document.getElementById(`pokedex_${j}`).classList.add(`pdx_bg_color_${[i]}`); // Sobald die Bedingung erfüllt ist, wird die gewünschte Classe an das gewünschte Element übertragen
+    for(let i = 0; i < allTypes.length; i++) {
+        if (currentSpecialty === allTypes[i]) {
+            document.getElementById(`pokedex_${j}`).classList.add(`pdx_bg_color_${[i]}`);
         }
     }
 }
@@ -55,15 +55,15 @@ function cardWindow(j, action) {
         addCardBackgrounColor(j);
         displayNoneValueOfNull(j);
         contollLibrary(j, false);
-        } else if (action === 'close') { // Schließt die Karte und das Hauptmenüfenster "Library"
+        } else if (action === 'close') {
             showOrCoseCardWindow(false);
             openLibrary(false);
         }
 }
 
-function showOrCoseCardWindow(isOpen) { // Boolescherparameter, der "true" oder "false"  
-    const action = isOpen ? 'remove' : 'add'; // definiert eine Variable, die den Boolescherparameter auf "true" und "false". Anschließend folgt eine "if-else" Abfrage, die bei "true" den Wert "remove" oder bei "false" den Wert "add" einnimmt.
-    document.getElementById("mainInfoBox").classList[action]("d-none"); // [action] stellt den eingenommenen Wert der Variable da und ermöglicht es, die Methode "classList" dynamisch darzustellen. 
+function showOrCoseCardWindow(isOpen) {
+    const action = isOpen ? 'remove' : 'add';
+    document.getElementById("mainInfoBox").classList[action]("d-none");
     document.getElementById('infoCardContainer').classList[action]('d-none');
     document.getElementById('body').classList[isOpen ? 'add' : 'remove']('noScroll');
 }
@@ -98,11 +98,11 @@ function displayNoneValueOfNull(j) {
 
 function contollLibrary(j, isInLibrary) {
     let currentPokemon = document.getElementById(`infoCard${j}`);
-    let currentId = currentPokemon.id; // holt sich die ID aus dem aktuellen DOM
+    let currentId = currentPokemon.id;
 
     for (let i = 0; i < myLibrary.length; i++) {
         let currentArray = myLibrary[i];
-        if(currentArray.id === currentId) { // currentArray.id holt sich die ID des DOM aus dem jeweiligen Array 
+        if(currentArray.id === currentId) {
             document.getElementById(`likeButton${j}`).classList[isInLibrary ? 'remove' : 'add']('d-none');
             document.getElementById(`activLikeButton${j}`).classList[isInLibrary ? 'add' : 'remove']('d-none');
         }
@@ -126,10 +126,10 @@ function addToLibrary(j, isInLibrary) {
 }
 
 function findAndDeleteCard(currentId) {
-    for(let i = 0; i < myLibrary.length; i++) { // Iteriert das gesammte Array durch, bis die passende Karte gefunden wurde, die gelöscht werden soll
+    for(let i = 0; i < myLibrary.length; i++) {
         if(myLibrary[i].id === currentId) {
             myLibrary.splice(i, 1);
-            break; // Stoppt die For-Schleife, sobald die Bedingung erfüllt wurde
+            break;
         }
     }
 }
@@ -138,7 +138,7 @@ function findAndDeleteCard(currentId) {
 
 function goForward(j) {
     j++;
-    if(j === amountOfPokemon.length) {
+    if(j === names.length) {
         cardWindow(j, 'close');
     } else {
         cardWindow(j, 'show');

@@ -31,7 +31,7 @@ let myLibrary = [];
         async function loadPokemon() {
             loadingScreen(true);
             for (let i = start; i < showPokemon; i++) {
-            let url = `https://pokeapi.co/api/v2/pokemon/${i}/`; //  Enthält: name, height, weight, ability, types, images, stats
+            let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
             let response = await fetch(url);
             responseAsJson = await response.json();
             pushToArrays();
@@ -55,7 +55,7 @@ let myLibrary = [];
         }
 
         function ifAvailablePushToArray() {
-            if(responseAsJson['abilities'].length === 1) { // Die Länge des Arrays lässt sich im Baumdiagram erkennen
+            if(responseAsJson['abilities'].length === 1) {
                 abilitie_2.push(null);
             } else {
                 abilitie_2.push(responseAsJson['abilities']['1']['ability']['name']);
@@ -69,7 +69,7 @@ let myLibrary = [];
 
         function generateCardNumber() {
             if(amountOfPokemon <= 35) {
-                for(let i = 1; i <= names.length; i++) {
+                for(let i = 0; i <= names.length; i++) {
                     amountOfPokemon.push(i);
             }
             } else {
