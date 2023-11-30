@@ -133,13 +133,3 @@ function renderBaseStats(j) {
     `;
     renderChart(j); // Function is placed in separat js file (chart.js)
 }
-
-// Comming soon (My Pokemon Library)
-
-function commingSoon() {
-    document.getElementById('MAIN_CONTAINER').innerHTML += /*html*/ `
-    <div id="commingSoon" onclick="closeCommingSoon()">
-        <h1 style="color: white;">Comming soon!</h1>
-    </div>
-    `;
-}

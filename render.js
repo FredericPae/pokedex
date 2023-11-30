@@ -156,6 +156,11 @@ function goBack(j) {
 
 // Comming soon
 
-function closeCommingSoon() {
-    location.reload();
+function commingSoon(isOpen) {
+    let action = isOpen ? 'remove' : 'add';
+    document.getElementById('commingSoon').classList[action]('d-none');
+
+    if (isOpen === false) {
+        cardWindow(null, 'close');
+    }
 }
